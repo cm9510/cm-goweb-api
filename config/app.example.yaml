@@ -1,0 +1,18 @@
+app:
+  env: 'debug' #debug test release
+  run_at: 8080 #app run at device's port
+
+api_status:
+  ok: 100
+  fail: 101
+  msg_success: 'ok'
+  msg_fail: 'failed'
+
+mysql:
+  host: '127.0.0.1'
+  port: 3306
+  username: root
+  password: '123456'
+  dbname: 'user'
+  charset: 'utf8'
+  timeout: '10s'

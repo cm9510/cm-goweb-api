@@ -12,11 +12,9 @@ type Users struct {
 	base
 }
 
-// func (u *Users)NewUsers() *Users {
-// 	return &Users{}
-// }
-
+// 获取用户详情
 func (u Users) GetDetail(c *gin.Context) {
+
 	id := c.Query("id")
 
 	db := models.GetDb()
@@ -29,19 +27,12 @@ func (u Users) GetDetail(c *gin.Context) {
 		Error
 
 	if errors.Is(err, gorm.ErrRecordNotFound) {
-		u.base.SuccessJson(c)
-		// c.JSON(200, gin.H{
-		// 	"err": "用户不存在",
-		// })
+		u.base.FailJson(c).Msg("用户不存在").Response()
 		return
 	} else if err != nil {
-		c.JSON(200, gin.H{
-			"err": "11111 " + err.Error(),
-		})
+		u.base.FailJson(c).Msg(err.Error()).Response()
 		return
 	}
 
-	c.JSON(200, gin.H{
-		"data": member,
-	})
+	u.base.SuccessJson(c).Data(member).Response()
 }

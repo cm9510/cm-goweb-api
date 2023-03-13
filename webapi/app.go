@@ -17,13 +17,15 @@ func Start() {
 
 	r := gin.Default()
 
-	// 配置加入全局
+	// 配置入全局
 	r.Use(func(ctx *gin.Context) {
 		ctx.Set("conf", config)
 	})
 
 	// 注册路由
-	r = routes.ApiRouter(r)
+	routes.ApiRouter(r)
+	routes.WebRouter(r)
+	// ...
 
 	// 开启服务
 	r.Run(fmt.Sprintf(":%d", config.App.RunAt))

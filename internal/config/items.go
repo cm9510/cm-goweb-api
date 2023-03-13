@@ -6,8 +6,10 @@ type Items struct {
 		RunAt int32  `yaml:"run_at"`
 	}
 	ApiStatus struct {
-		Ok   int8 `yaml:"ok"`
-		Fail int8 `yaml:"fail"`
+		Ok         int8   `yaml:"ok"`
+		Fail       int8   `yaml:"fail"`
+		MsgSuccess string `yaml:"msg_success"`
+		MsgFail    string `yaml:"msg_fail"`
 	}
 	Mysql struct {
 		Host     string `yaml:"host"`
